@@ -63,8 +63,9 @@ Vagrant.configure("2") do |config|
   # View the documentation for the provider you are using for more
   # information on available options.
   config.vm.provider "virtualbox" do |vb|
+    vb.gui = true
     vb.cpus = 2
-    vb.memory = "1024"
+    vb.memory = "2048"
   end
 
   # Enable provisioning with a shell script. Additional provisioners such as
@@ -111,24 +112,6 @@ Vagrant.configure("2") do |config|
     webapp2.vm.network "private_network", ip: "192.168.33.103"
   end
 
-  config.vm.define "webapp3" do |webapp3|
-    webapp3.vm.provision "shell", inline: <<-SHELL
-    set -e
-    export DEBIAN_FRONTEND=noninteractive
-    apt-get update
-    apt-get install -y --no-install-recommends ansible git
-    GITDIR="${HOME}/isucon10-qualify"
-    rm -rf ${GITDIR}
-    git clone https://github.com/imamiya-masaki/isucon10-qualify.git ${GITDIR}
-    (
-      cd ${GITDIR}/provisioning/ansible
-      PYTHONUNBUFFERED=1 ANSIBLE_FORCE_COLOR=true ansible-playbook -i competitor, --connection=local competitor.yaml
-    )
-    rm -rf ${GITDIR}
-  SHELL
-    webapp3.vm.network "private_network", ip: "192.168.33.104"
-  end
-
   config.vm.define "bench" do |bench|
     bench.vm.provision "shell", inline: <<-SHELL
     set -e
@@ -144,6 +127,6 @@ Vagrant.configure("2") do |config|
     )
     rm -rf ${GITDIR}
   SHELL
-    bench.vm.network "private_network", ip: "192.168.33.105"
+    bench.vm.network "private_network", ip: "192.168.33.104"
   end
 end
