@@ -63,6 +63,7 @@ Vagrant.configure("2") do |config|
   # View the documentation for the provider you are using for more
   # information on available options.
   config.vm.provider "virtualbox" do |vb|
+    vb.cpus = 2
     vb.memory = "1024"
   end
 
@@ -82,7 +83,7 @@ Vagrant.configure("2") do |config|
     apt-get install -y --no-install-recommends ansible git
     GITDIR="${HOME}/isucon10-qualify"
     rm -rf ${GITDIR}
-    git clone https://github.com/isucon/isucon10-qualify.git ${GITDIR}
+    git clone https://github.com/imamiya-masaki/isucon10-qualify.git ${GITDIR}
     (
       cd ${GITDIR}/provisioning/ansible
       PYTHONUNBUFFERED=1 ANSIBLE_FORCE_COLOR=true ansible-playbook -i competitor, --connection=local competitor.yaml
@@ -100,7 +101,7 @@ Vagrant.configure("2") do |config|
     apt-get install -y --no-install-recommends ansible git
     GITDIR="${HOME}/isucon10-qualify"
     rm -rf ${GITDIR}
-    git clone https://github.com/isucon/isucon10-qualify.git ${GITDIR}
+    git clone https://github.com/imamiya-masaki/isucon10-qualify.git ${GITDIR}
     (
       cd ${GITDIR}/provisioning/ansible
       PYTHONUNBUFFERED=1 ANSIBLE_FORCE_COLOR=true ansible-playbook -i competitor, --connection=local competitor.yaml
@@ -118,7 +119,7 @@ Vagrant.configure("2") do |config|
     apt-get install -y --no-install-recommends ansible git
     GITDIR="${HOME}/isucon10-qualify"
     rm -rf ${GITDIR}
-    git clone https://github.com/isucon/isucon10-qualify.git ${GITDIR}
+    git clone https://github.com/imamiya-masaki/isucon10-qualify.git ${GITDIR}
     (
       cd ${GITDIR}/provisioning/ansible
       PYTHONUNBUFFERED=1 ANSIBLE_FORCE_COLOR=true ansible-playbook -i competitor, --connection=local competitor.yaml
@@ -136,7 +137,7 @@ Vagrant.configure("2") do |config|
     apt-get install -y --no-install-recommends ansible git
     GITDIR="${HOME}/isucon10-qualify"
     rm -rf ${GITDIR}
-    git clone https://github.com/isucon/isucon10-qualify.git ${GITDIR}
+    git clone https://github.com/imamiya-masaki/isucon10-qualify.git ${GITDIR}
     (
       cd ${GITDIR}/provisioning/ansible
       PYTHONUNBUFFERED=1 ANSIBLE_FORCE_COLOR=true ansible-playbook -i bench, --connection=local bench.yaml
