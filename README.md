@@ -12,3 +12,15 @@
 
 [VagrantISUCONデータ](https://github.com/matsuu/vagrant-isucon/tree/master/isucon10-qualifier-standalone)
 ※allinOneの設定
+
+
+# 実行手順
+
+## vagrant立ち上げ
+
+    vagrant up
+  
+## vagrantの中に入る
+
+    vagrant ssh ${目的のvagrantName}
+  
