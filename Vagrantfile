@@ -90,7 +90,7 @@ Vagrant.configure("2") do |config|
     )
     rm -rf ${GITDIR}
   SHELL
-    webapp1.vm.network "private_network", ip: "192.168.33.100"
+    webapp1.vm.network "private_network", ip: "192.168.33.102"
   end
 
   config.vm.define "webapp2" do |webapp2|
@@ -108,7 +108,7 @@ Vagrant.configure("2") do |config|
     )
     rm -rf ${GITDIR}
   SHELL
-    webapp2.vm.network "private_network", ip: "192.168.33.101"
+    webapp2.vm.network "private_network", ip: "192.168.33.103"
   end
 
   config.vm.define "webapp3" do |webapp3|
@@ -126,7 +126,7 @@ Vagrant.configure("2") do |config|
     )
     rm -rf ${GITDIR}
   SHELL
-    webapp3.vm.network "private_network", ip: "192.168.33.102"
+    webapp3.vm.network "private_network", ip: "192.168.33.104"
   end
 
   config.vm.define "bench" do |bench|
@@ -144,6 +144,6 @@ Vagrant.configure("2") do |config|
     )
     rm -rf ${GITDIR}
   SHELL
-    bench.vm.network "private_network", ip: "192.168.33.103"
+    bench.vm.network "private_network", ip: "192.168.33.105"
   end
 end
