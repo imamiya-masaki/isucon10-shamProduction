@@ -82,16 +82,16 @@ Vagrant.configure("2") do |config|
     export DEBIAN_FRONTEND=noninteractive
     apt-get update
     apt-get install -y --no-install-recommends ansible git
-    GITDIR="${HOME}/isucon10-qualify"
+    GITDIR="${HOME}/isucon10-next"
     rm -rf ${GITDIR}
-    git clone https://github.com/imamiya-masaki/isucon10-qualify.git ${GITDIR}
+    git clone https://github.com/imamiya-masaki/isucon10-next.git ${GITDIR}
     (
       cd ${GITDIR}/provisioning/ansible
       PYTHONUNBUFFERED=1 ANSIBLE_FORCE_COLOR=true ansible-playbook -i competitor, --connection=local competitor.yaml
     )
     rm -rf ${GITDIR}
   SHELL
-    webapp1.vm.network "private_network", ip: "192.168.33.102"
+    webapp1.vm.network "private_network", ip: "192.168.33.11"
   end
 
   config.vm.define "webapp2" do |webapp2|
@@ -100,16 +100,33 @@ Vagrant.configure("2") do |config|
     export DEBIAN_FRONTEND=noninteractive
     apt-get update
     apt-get install -y --no-install-recommends ansible git
-    GITDIR="${HOME}/isucon10-qualify"
+    GITDIR="${HOME}/isucon10-next"
     rm -rf ${GITDIR}
-    git clone https://github.com/imamiya-masaki/isucon10-qualify.git ${GITDIR}
+    git clone https://github.com/imamiya-masaki/isucon10-next.git ${GITDIR}
     (
       cd ${GITDIR}/provisioning/ansible
       PYTHONUNBUFFERED=1 ANSIBLE_FORCE_COLOR=true ansible-playbook -i competitor, --connection=local competitor.yaml
     )
     rm -rf ${GITDIR}
   SHELL
-    webapp2.vm.network "private_network", ip: "192.168.33.103"
+    webapp2.vm.network "private_network", ip: "192.168.33.12"
+  end
+  config.vm.define "webapp3" do |webapp3|
+    webapp3.vm.provision "shell", inline: <<-SHELL
+    set -e
+    export DEBIAN_FRONTEND=noninteractive
+    apt-get update
+    apt-get install -y --no-install-recommends ansible git
+    GITDIR="${HOME}/isucon10-next"
+    rm -rf ${GITDIR}
+    git clone https://github.com/imamiya-masaki/isucon10-next.git ${GITDIR}
+    (
+      cd ${GITDIR}/provisioning/ansible
+      PYTHONUNBUFFERED=1 ANSIBLE_FORCE_COLOR=true ansible-playbook -i competitor, --connection=local competitor.yaml
+    )
+    rm -rf ${GITDIR}
+  SHELL
+    webapp3.vm.network "private_network", ip: "192.168.33.13"
   end
 
   config.vm.define "bench" do |bench|
@@ -118,15 +135,15 @@ Vagrant.configure("2") do |config|
     export DEBIAN_FRONTEND=noninteractive
     apt-get update
     apt-get install -y --no-install-recommends ansible git
-    GITDIR="${HOME}/isucon10-qualify"
+    GITDIR="${HOME}/isucon10-next"
     rm -rf ${GITDIR}
-    git clone https://github.com/imamiya-masaki/isucon10-qualify.git ${GITDIR}
+    git clone https://github.com/imamiya-masaki/isucon10-next.git ${GITDIR}
     (
       cd ${GITDIR}/provisioning/ansible
       PYTHONUNBUFFERED=1 ANSIBLE_FORCE_COLOR=true ansible-playbook -i bench, --connection=local bench.yaml
     )
     rm -rf ${GITDIR}
   SHELL
-    bench.vm.network "private_network", ip: "192.168.33.104"
+    bench.vm.network "private_network", ip: "192.168.33.14"
   end
 end
