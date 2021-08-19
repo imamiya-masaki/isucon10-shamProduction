@@ -126,7 +126,7 @@ Vagrant.configure("2") do |config|
     )
     rm -rf ${GITDIR}
   SHELL
-    webapp3.vm.network "private_network", ip: "192.168.33.13"
+    webapp3.vm.network "private_network", ip: "192.168.33.14"
   end
 
   config.vm.define "bench" do |bench|
@@ -144,6 +144,6 @@ Vagrant.configure("2") do |config|
     )
     rm -rf ${GITDIR}
   SHELL
-    bench.vm.network "private_network", ip: "192.168.33.14"
+    bench.vm.network "private_network", ip: "192.168.33.28"
   end
 end
